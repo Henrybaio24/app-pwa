@@ -1,0 +1,48 @@
+<div class="alert alert-danger" role="alert" *ngIf="errorPassword">
+  {{mensajeError}}
+</div>
+<div class="container mt-5">
+  <div class="row loginc">
+    <div class="col-md-4">
+      <div class="card login">
+        <div class="card-header bg-light text-center border border-light">
+          <h3 class="font-weight-bold">Iniciar Sesión</h3>
+        </div>
+        <div class="card-body border border-light">
+          <form (ngSubmit)="login()" #loginForm="ngForm">
+            <div class="form-group">
+              <h5 for="Nombre">Email</h5>
+
+              <input type="email" name="email" [(ngModel)]="user.email" class="form-control" #email="ngModel"
+                [ngClass]="{'is-invalid': email.invalid && email.touched}"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+
+              <div *ngIf="email.invalid && email.touched" class="alerta">
+                Debes completar el email.
+              </div>
+
+              <div *ngIf="email.errors?.pattern" class="alerta">
+                el email no poseo un formato valido
+              </div>
+            </div>
+            <div class="form-group">
+              <h5 for="Nombre">Contraseña</h5>
+
+              <input type="password" name="password" [(ngModel)]="user.password" class="form-control"
+                #password="ngModel" [ngClass]="{'is-invalid': password.invalid && password.touched}" required>
+
+              <div *ngIf="password.invalid && password.touched" class="alerta">
+                Debes completar el password.
+              </div>
+            </div>
+            <div class="mt-4">
+              <button type="submit" class="btn btn-secondary btn-lg btn-block text-primary"
+                [disabled]="loginForm.invalid">
+                Ingresar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

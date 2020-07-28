@@ -1,0 +1,23 @@
+<div class="row mt-4 mb-4">
+  <div class="col-md-6 col-lg-4" *ngFor="let image of images">
+    <div class="card">
+      <img [src]="image.ruta" class="card-img-top" alt="" style="width: 350px; height: 200px;">
+      <div class="card-body">
+        <h5>{{image.nombre}}</h5>
+        <p>{{image.descripcion}}</p>
+      </div>
+      <div class="card-footer">
+        <div class="row justify-content-between">
+          <div class="bderecha">
+            <button class="btn btn-success ml-2" (click)="editImagen(image._id)" data-toggle="tooltip"
+              data-placement="top" title="Editar Imagen">EDITAR</button>
+            <button class="btn btn-danger ml-2" (click)="deleteImagen(image._id)" data-toggle="tooltip"
+              data-placement="top" title="Borrar">ELIMINAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+</div>

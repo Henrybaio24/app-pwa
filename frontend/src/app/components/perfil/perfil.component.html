@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mt-3">
+      <div class="card">
+        <br>
+        <h2 class="text-center"> Mis datos personales </h2>
+        <div class="col">
+          <div class="card-block text-center">
+            <div>
+              <h5 class="mt-4">Nombre: </h5>
+              <h3>{{user.nombre}} {{user.apellido}}</h3>
+            </div>
+            <div>
+              <h5 class="mt-4">Email:</h5>
+              <h3> {{user.email}}</h3>
+            </div>
+            <div>
+              <h5 class="mt-4">Acerca de mi:</h5>
+              <h3> {{user.acerca}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer align-items-center ">
+          <button class="btn btn-primary ml-3" title="Editar Usuario" data-toggle="modal" data-target="#exampleModal2"
+            *ngIf="user._id === idUserAuth">
+            EDITAR DATOS
+          </button>
+          <button>
+            
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-white">
+      <div class="modal-header ">
+        <h5 class="modal-title" style="color:black;" id="exampleModalLabel2">Editar datos del usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #formUser="ngForm">
+        <div class="modal-body ">
+          <div class="form-group">
+            <label for="" style="color:rgb(114, 110, 110);">Nombre</label>
+            <input type="input" class="form-control" name="nombre" [(ngModel)]="userModif.nombre" #nombre="ngModel"
+              [ngClass]="{'is-invalid': nombre.invalid && nombre.touched}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="" style="color:rgb(114, 110, 110);">Apellido</label>
+            <input type="input" class="form-control" name="apellido" [(ngModel)]="userModif.apellido"
+              #apellido="ngModel" [ngClass]="{'is-invalid': apellido.invalid && apellido.touched}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="" style="color:rgb(114, 110, 110);">Acerca de</label>
+            <input type="input" class="form-control" name="acerca" [(ngModel)]="userModif.acerca" #acerca="ngModel"
+              [ngClass]="{'is-invalid': acerca.invalid && acerca.touched}" required>
+          </div>
+        </div>
+        <div class="modal-footer ">
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" [disabled]="formUser.invalid"
+            (click)="updateUser()">
+            Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
