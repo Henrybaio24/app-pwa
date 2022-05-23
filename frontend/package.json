@@ -22,7 +22,7 @@
     "@angular/router": "~7.1.0",
     "@angular/service-worker": "~7.1.0",
     "core-js": "^2.6.11",
-    "dexie": "^3.0.1",
+    "dexie": "^3.2.2",
     "rxjs": "~6.3.3",
     "tslib": "^1.13.0",
     "zone.js": "~0.8.26"
